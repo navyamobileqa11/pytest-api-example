@@ -12,5 +12,17 @@ TODO: Finish this test by...
 3) Validate the response codes and values
 4) Validate the response message "Order and pet status updated successfully"
 '''
+import requests
+
 def test_patch_order_by_id():
-    pass
+    url = "https://petstore.swagger.io/v2/pet"
+
+    payload = {
+        "id": 1,
+        "name": "doggie",
+        "status": "sold"
+    }
+
+    response = requests.put(url, json=payload)
+
+    assert_that(response.status_code, is_(200))
